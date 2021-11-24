@@ -1,9 +1,11 @@
-import './App.css';
+import Navbar from './Navbar'
+import Signup from './Signup'
 
 function App() {
   return (
     <div className="App">
-      <h1>Test</h1>
+      <Navbar />
+      <Signup />
     </div>
   );
 }
