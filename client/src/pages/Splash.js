@@ -1,11 +1,11 @@
 // import { useState } from 'react';
-import Navbar from './Navbar'
+import NavbarSignup from './NavbarSignUp'
 
 const SplashPage = () => {
         
     return (
         <div className="splash-page">
-            <Navbar />
+            <NavbarSignup />
             <h1>Hola a todos</h1>
         </div>
     )

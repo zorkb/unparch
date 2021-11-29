@@ -1,9 +1,10 @@
-import Signup from './Signup'
+import React from 'react';
+import Routes from '.config/routes'
 
 function App() {
   return (
     <div className="App">
-      <Signup />
+      <Routes />
     </div>
   );
 }

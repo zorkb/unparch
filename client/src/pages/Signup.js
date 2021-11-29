@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Navbar from './Navbar'
+import NavbarSignup from './NavbarSignUp'
 import './form-pages.css';
 
 const Signup = () => {
@@ -27,7 +27,7 @@ const Signup = () => {
     }
     return (
         <div className="form-page">
-            <Navbar />
+            <NavbarSignup />
             <div className="form-component">
 
                 <h3 className="form-title">Get started for free</h3>
