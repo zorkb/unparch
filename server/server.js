@@ -1,13 +1,22 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
-const mongoose = require('mongoose')
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+
+//express app
+const app = express();
+
+//connect to mongodb
+const dbURI = 'mongodb+srv://zbuch:Vandelay1261@cluster0.xcdqf.mongodb.net/unparch?retryWrites=true&w=majority'
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then((result) => console.log('connected to mongodb!'))
+    .catch((err) => console.log(err));
+
 
 ///middleware
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://')
 
 app.post('/api/signup', (req, res) => {
     console.log(req.body)

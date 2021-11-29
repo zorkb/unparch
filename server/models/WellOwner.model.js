@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const WellOwner = new mongoose.Schema({
     company: { type: String, required: true },
