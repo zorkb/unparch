@@ -4,6 +4,7 @@
     align-items: center;
     margin: 0 auto;
     background-color: #EAE8DC;
+    width: 100vw;
 }
 .navbar .logo-main {
     max-width: 200px;
@@ -13,7 +14,7 @@
     margin-left: auto;
 }
 .navbar a {
-    margin-left: 16px;
+    margin-right: 50px;
     text-decoration: none;
     padding: 6px;
     font-size: 14px;

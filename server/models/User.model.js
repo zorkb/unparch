@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const wellOwnerSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     company: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
@@ -12,14 +12,15 @@ const wellOwnerSchema = new mongoose.Schema({
     avatar: { type: String, required: false },
     role: {
         type: String,
-        required: [true, 'please select an account type'],
+        required: [false, 'please select an account type'],
         enum: ['Well Owner', 'Technician']
     },
+    wells: { type: mongoose.Types.ObjectId, ref: 'WellData' },
     },
     { timestamps: true },
     { collection: 'well-owner-data' },
 );
 
-const WellOwner = mongoose.model('WellOwner', wellOwnerSchema);
+const User = mongoose.model('User', userSchema);
 
-module.exports = WellOwner
+module.exports = User

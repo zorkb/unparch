@@ -1,7 +1,7 @@
 require('../config/db.connection')
 
 module.exports = {
-    WellOwner: require("./WellOwner"),
-    TestData: require("./TestData"),
-    WellData: require("./WellData"),
+    User: require("./User.model"),
+    TestData: require("./TestData.model"),
+    WellData: require("./WellData.model"),
 };
