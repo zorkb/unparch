@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const WellOwner = new mongoose.Schema({
+const wellOwnerSchema = new mongoose.Schema({
     company: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
@@ -11,11 +11,11 @@ const WellOwner = new mongoose.Schema({
     city: { type: String, required: false },
     state: { type: String, required: false },
     avatar: { type: String, required: false },
-    registrationDate: { type: String, default: Date.now },
     },
-    { collection: 'well-owner-data' }
-)
+    { timestamps: true },
+    { collection: 'well-owner-data' },
+);
 
-const model = mongoose.model('WellOwnerData', WellOwner)
+const WellOwner = mongoose.model('WellOwner', wellOwnerSchema);
 
-module.exports = model
+module.exports = WellOwner
