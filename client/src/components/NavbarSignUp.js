@@ -8,7 +8,7 @@ const NavbarSignup = () => {
                 <img className="logo-main" src="https://i.ibb.co/GTnLrGK/unparch-main-logo-tan.png" alt="unparch logo" />
             </div>
             <div className="links">
-                <a href="/create">Already have an account?</a>
+                <Link to="/sign">Already have an account?</Link>
             </div>
         </nav>
     );

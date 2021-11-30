@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Navbar from './NavbarSignUp'
-import './form-pages.css';
+import NavbarSignIn from '../components/NavbarSignIn'
+import '../css/form-pages.css';
 
 const SignIn = () => {
     const [email, setEmail] = useState('')
@@ -25,7 +25,7 @@ const SignIn = () => {
     }
     return (
         <div className="form-page">
-            <Navbar />
+            <NavbarSignIn />
             <div className="form-component">
 
                 <h3 className="form-title">Get started for free</h3>

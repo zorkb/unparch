@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import NavbarSignup from './NavbarSignUp'
-import './form-pages.css';
+import NavbarSignup from '../components/NavbarSignup'
+import '../css/form-pages.css';
 
 const Signup = () => {
     const [company, setCompany] = useState('')

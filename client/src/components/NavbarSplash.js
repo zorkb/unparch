@@ -8,8 +8,8 @@ const NavbarSplash = () => {
                 <img className="logo-main" src="https://i.ibb.co/GTnLrGK/unparch-main-logo-tan.png" alt="unparch logo" />
             </div>
             <div className="links">
-                <a href="/create">Sign in</a>
-                <a className="nav-button" href="/create">Get started for free</a>
+                <Link href="/signin">Sign in</Link>
+                <Link className="nav-button" to="/signup">Get started for free</Link>
             </div>
         </nav>
     );
