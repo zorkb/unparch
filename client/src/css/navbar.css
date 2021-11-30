@@ -16,9 +16,16 @@
 .navbar a {
     margin-right: 50px;
     text-decoration: none;
-    padding: 6px;
+    padding: 6px 12px 6px 12px;
     font-size: 14px;
 }
-.navbar a:hover {
+/* .navbar a:hover {
     color: #f55246;
+} */
+
+.nav-button {
+    background-color: #f55246;
+    color: white;
+    border-radius: 4px;
+    width: 100px;
 }

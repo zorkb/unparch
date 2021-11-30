@@ -8,19 +8,23 @@ const SplashPage = () => {
     return (
         <div className="splash-page">
             <NavbarSplash />
-            <h1>
-                Your land's well data - 
-                <span className="callout">
-                        all in one place.
-                </span>
-            </h1>
 
-            <div className="big-button">
-                <Link to="/signup">Get started for free</Link>
+            <div className="splash-page-top">
+                <h1 className="tagline">
+                    Your land's well data -&nbsp;  
+                    <span className="callout">
+                        all in one place.
+                    </span>
+                </h1>
+                <div className="button-containter">
+                <Link className="page-button-big" to="/signup">
+                    Get started for free
+                </Link>
+                </div>
             </div>
 
         </div>
     )
 }
 
-export default SplashPage
+export default SplashPage;

@@ -1,17 +1,20 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Splash from './Splash';
+import SplashPage from '../pages/Splash';
+import Signup from '../pages/Signup';
+import SignIn from '../pages/SignIn';
+import NotFound from '../pages/NotFound';
 
-const Routes = () => {
+const SiteRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Splash />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/" element={<SplashPage />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     )
 }
 
-export default Routes;
+export default SiteRoutes;

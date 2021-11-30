@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import './navbar.css';
+import '../css/navbar.css';
 
 const NavbarSignIn = () => {
     return ( 
@@ -8,7 +8,7 @@ const NavbarSignIn = () => {
                 <img className="logo-main" src="https://i.ibb.co/GTnLrGK/unparch-main-logo-tan.png" alt="unparch logo" />
             </div>
             <div className="links">
-                <Link to="/signup">Create a new account</Link>
+                <Link className="nav-button" to="/signup">Create a new account</Link>
             </div>
         </nav>
     );

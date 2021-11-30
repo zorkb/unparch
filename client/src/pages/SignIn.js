@@ -28,7 +28,7 @@ const SignIn = () => {
             <NavbarSignIn />
             <div className="form-component">
 
-                <h3 className="form-title">Get started for free</h3>
+                <h3 className="form-title">Sign into your account</h3>
                 <hr className="form-line" />
                 <form className="form-body" onSubmit={signInUser}>
                     
