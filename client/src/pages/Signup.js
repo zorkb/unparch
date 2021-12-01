@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NavbarSignup from '../components/NavbarSignup'
 import '../css/form-pages.css';
 
 const Signup = () => {
+    const navigate = useNavigate()
     const [company, setCompany] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -23,7 +25,9 @@ const Signup = () => {
         })
 
         const data = await response.json()
-        console.log(data);
+        if(data.status === 'ok') {
+            navigate('/signin')
+        }
     }
     return (
         <div className="form-page">

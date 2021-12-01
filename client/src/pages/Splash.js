@@ -13,10 +13,10 @@ const SplashPage = () => {
                 <h1 className="tagline">
                     Your land's well data -&nbsp;  
                     <span className="callout">
-                        all in one place.
+                        all in one place <span className="period">.</span>
                     </span>
                 </h1>
-                <div className="button-containter">
+                <div className="button-container">
                 <Link className="page-button-big" to="/signup">
                     Get started for free
                 </Link>

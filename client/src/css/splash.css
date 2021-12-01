@@ -6,7 +6,7 @@
     margin-bottom: 30px;
     margin-top: 0px;
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -17,7 +17,7 @@
     font-size: 55px;
     font-weight: 100;
     text-align: center;
-    margin-top: 250px;
+    margin-top: 400px;
 }
 
 .callout {
@@ -40,10 +40,22 @@
     margin-top: 30px;
     margin-bottom: 30px;
     text-decoration: none;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+
+.button-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
 }
 
 .page-button-big a {
     text-decoration: none;
     justify-self: center;
+}
+
+.period {
+    color: #f34e42;
 }
 

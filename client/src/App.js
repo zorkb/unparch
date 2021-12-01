@@ -1,5 +1,6 @@
 import React from 'react';
 import SiteRoutes from './config/routes'
+import './App.css'
 
 function App() {
   return (

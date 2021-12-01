@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import NavbarSignIn from '../components/NavbarSignIn'
+import NavbarSignIn from '../components/NavbarSignIn';
+import { useNavigate } from 'react-router-dom';
 import '../css/form-pages.css';
 
-const SignIn = () => {
+function SignIn() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const navigate = useNavigate()
 
     async function signInUser(event) {
         event.preventDefault()
@@ -18,9 +20,17 @@ const SignIn = () => {
                 email, 
                 password,
             }),
+            // navigate()
         })
 
         const data = await response.json()
+
+        if(data.user) {
+            console.log('login worked')
+            navigate('/userhome')
+        } else {
+            alert('Please check your email and password')
+        }
         console.log(data);
     }
     return (

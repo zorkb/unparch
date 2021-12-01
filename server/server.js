@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken')
 
 const User = require('./models/User.model');
 
@@ -51,18 +52,18 @@ app.post('/api/signup', async (req, res) => {
     }
 })
     
-app.post('/api/login', async (req, res) => {
-        await User.findOne({
-            email: req.body.email,
-            password: req.body.password,
-        })
+app.get('/api/signin', async (req, res) => {
+        const token = req.headers['x-acess-token']
+        try {
+            const decoded = jwt.verify(token, 'prizza@dagreatwall1343')
+            const email = decoded.email
+            const user = await User.findOne({ email: email })
 
-        if (user) {
-            return res.json({ status: 'ok', user: true })
-        } else {
-            return res.json({ status: 'error', user: false })
+            return { status: 'ok', well: user.well }
+        } catch(error) {
+            console.log(error)
+            res.json({ status: 'error', error: 'invalid token' })
         }
-
 })
 
 app.listen(4000, () => {
