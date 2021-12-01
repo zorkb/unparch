@@ -28,7 +28,7 @@ const handleWellCreation = () => {
     async function createWell(event) {
         event.preventDefault()
 
-        const response = await fetch('http://localhost:4000/api/signup', {
+        const response = await fetch('http://localhost:4000/api/wellinfo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const handleWellCreation = () => {
 
         const data = await response.json()
         if(data.status === 'ok') {
-            navigate('/signin')
+            navigate('/userhome')
         }
     }
     return (

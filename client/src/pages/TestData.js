@@ -3,211 +3,263 @@ import { useNavigate } from 'react-router-dom';
 import NavbarSignup from '../components/NavbarSignup'
 import '../css/form-pages.css';
 
-const handleWellCreation = () => {
+const handleTestData = () => {
     const navigate = useNavigate()
 
-    const [wellName, setWellName] = useState('')
-    const [landName, setLandName] = useState('')
-    const [latitude, setLatitude] = useState('')
-    const [longitude, setLongitude] = useState('')
-    const [utilityCo, setUtilityCo] = useState('')
-    const [image, setImage] = useState('')
-    const [motorMake, setMotorMake] = useState('')
-    const [pumpMake, setPumpMake] = useState('')
-    const [meterNumber, setMeterNumber] = useState('')
-    const [serialNumber, setSerialNumber] = useState('')
-    const [voltage, setVoltage] = useState('')
-    const [amps, setAmps] = useState('')
-    const [lastChecked, setLastChecked] = useState('')
-    const [lastRetrofit, setLastRetrofit] = useState('')
-    const [lastChecked, setLastChecked] = useState('')
-    const [dueForCheck, setDueForCheck] = useState('')
-    const [retrofitDesired, setRetrofitDesired] = useState('')
-    const [retrofitScheduled, setRetrofitScheduled] = useState('')
+    const [technicianCompany, setTechnicianCompany] = useState('')
+    const [overallPumpingEfficiency, setOverallPumpingEfficiency] = useState('')
+    const [pumpingWaterLevel, setPumpingWaterLevel] = useState('')
+    const [standingWaterLevel, setStandingWaterLevel] = useState('')
+    const [drawDown, setDrawDown] = useState('')
+    const [recoveredWaterLevel, setRecoveredWaterLevel] = useState('')
+    const [dischargePressureAtGauge, setDischargePressureAtGauge] = useState('')
+    const [totalLift, setTotalLift] = useState('')
+    const [flowVelocity, setFlowVelocity] = useState('')
+    const [measuredFlowRate, setMeasuredFlowRate] = useState('')
+    const [customerFlowRate, setCustomerFlowRate] = useState('')
+    const [specificCapacity, setSpecificCapacity] = useState('')
+    const [millionGallonsPerDay, setMillionGallonsPerDay] = useState('')
+    const [cubicFeetPerSecond, setCubicFeetPerSecond] = useState('')
+    const [hpInputToMotor, setHpInputToMotor] = useState('')
+    const [pctRatedMotorLoad, setPctRatedMotorLoad] = useState('')
+    const [kwInputToMotor, setKwInputToMotor] = useState('')
+    const [kwHrsPerAcreFt, setKwHrsPerAcreFt] = useState('')
+    const [costToPumpAcreFt, setCostToPumpAcreFt] = useState('')
+    const [energyCostPerHr, setEnergyCostPerHr] = useState('')
+    const [baseCostPerKwh, setBaseCostPerKwh] = useState('')
+    const [nameplateRpm, setNameplateRpm] = useState('')
+    const [rpmAtGearhead, setRpmAtGearhead] = useState('')
+    const [efficiencyAfterRetrofit, setEfficiencyAfterRetrofit] = useState('')
+    const [notes, setNotes] = useState('')
 
-    async function createWell(event) {
+    async function addTestData(event) {
         event.preventDefault()
 
-        const response = await fetch('http://localhost:4000/api/signup', {
+        const response = await fetch('http://localhost:4000/api/testdata', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                wellName, 
-                landName, 
-                latitude,
-                longitude,
-                utilityCo,
-                image,
-                motorMake,
-                pumpMake,
-                meterNumber,
-                serialNumber,
-                voltage,
-                amps,
-                lastChecked,
-                lastRetrofit,
-                dueForCheck,
-                retrofitDesired,
-                retrofitScheduled,
+                technicianCompany,
+                overallPumpingEfficiency,
+                pumpingWaterLevel,
+                standingWaterLevel,
+                drawDown,
+                recoveredWaterLevel,
+                dischargePressureAtGauge,
+                totalLift,
+                flowVelocity,
+                measuredFlowRate,
+                customerFlowRate,
+                specificCapacity,
+                millionGallonsPerDay,
+                cubicFeetPerSecond,
+                hpInputToMotor,
+                pctRatedMotorLoad,
+                kwInputToMotor,
+                kwHrsPerAcreFt,
+                energyCostPerHr,
+                costToPumpAcreFt,
+                baseCostPerKwh,
+                nameplateRpm,
+                rpmAtGearhead,
+                efficiencyAfterRetrofit,
+                notes,
             }),
         })
 
         const data = await response.json()
         if(data.status === 'ok') {
-            navigate('/signin')
+            navigate('/userhome')
         }
     }
     return (
         <div className="form-page">
             <NavbarSignup />
             <div className="form-component">
-                <h5 className="form-type">Add a new well</h5>
-                <h3 className="form-title">Baseline information</h3>
+                <h5 className="form-type">Add test data</h5>
+                <h3 className="form-title">Test data for {WellData.wellName}</h3>
                 <hr className="form-line" />
-                <form className="form-body" onSubmit={createWell}>
-                    <p className="input-label">Well name</p>
+                <form className="form-body" onSubmit={addTestData}>
+                    <p className="input-label">Technician company</p>
                     <input 
                         className="form-field"
-                        value={wellName}
-                        onChange={(e) => setWellName(e.target.value)}
+                        value={technicianCompany}
+                        onChange={(e) => setTechnicianCompany(e.target.value)}
                         type="text" 
                     />
-                    <p className="input-label">Land name</p>
+                    <p className="input-label">Overall pumping efficiency &#40;%&#41;</p>
                     <input 
                         className="form-field"
-                        value={landName}
-                        onChange={(e) => setLandName(e.target.value)}
+                        value={overallPumpingEfficiency}
+                        onChange={(e) => setOverallPumpingEfficiency(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Pumping water level &#40;ft&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={pumpingWaterLevel}
+                        onChange={(e) => setPumpingWaterLevel(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Standing water level &#40;ft&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={standingWaterLevel}
+                        onChange={(e) => setStandingWaterLevel(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Draw down &#40;ft&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={drawDown}
+                        onChange={(e) => setDrawDown(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Recovered water level &#40;ft&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={recoveredWaterLevel}
+                        onChange={(e) => setRecoveredWaterLevel(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Discharge pressure at gauge &#40;psi&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={dischargePressureAtGauge}
+                        onChange={(e) => setDischargePressureAtGauge(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Total lift &#40;ft&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={totalLift}
+                        onChange={(e) => setTotalLift(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Flow velocity &#40;ft/sec&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={flowVelocity}
+                        onChange={(e) => setFlowVelocity(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Measured flow rate &#40;gpm&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={measuredFlowRate}
+                        onChange={(e) => setMeasuredFlowRate(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Customer flow rate &#40;gpm&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={customerFlowRate}
+                        onChange={(e) => setCustomerFlowRate(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Specific capacity &#40;gpm/ft draw&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={specificCapacity}
+                        onChange={(e) => setSpecificCapacity(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Million gallons per 24 hrs</p>
+                    <input 
+                        className="form-field"
+                        value={millionGallonsPerDay}
+                        onChange={(e) => setMillionGallonsPerDay(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Cubic feet per second &#40;cfs&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={cubicFeetPerSecond}
+                        onChange={(e) => setCubicFeetPerSecond(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Horsepower input to motor</p>
+                    <input 
+                        className="form-field"
+                        value={hpInputToMotor}
+                        onChange={(e) => setHpInputToMotor(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Percent of rated motor load &#40;%&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={pctRatedMotorLoad}
+                        onChange={(e) => setPctRatedMotorLoad(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Kilowatt input to motor</p>
+                    <input 
+                        className="form-field"
+                        value={kwInputToMotor}
+                        onChange={(e) => setKwInputToMotor(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Kilowatt hours per acre foot</p>
+                    <input 
+                        className="form-field"
+                        value={kwHrsPerAcreFt}
+                        onChange={(e) => setKwHrsPerAcreFt(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Cost to pump acre foot &#40;$&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={costToPumpAcreFt}
+                        onChange={(e) => setCostToPumpAcreFt(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Energy cost &#40;$/hr&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={energyCostPerHr}
+                        onChange={(e) => setEnergyCostPerHr(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Base cost per Kwh &#40;$&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={baseCostPerKwh}
+                        onChange={(e) => setBaseCostPerKwh(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Nameplate RPM</p>
+                    <input 
+                        className="form-field"
+                        value={nameplateRpm}
+                        onChange={(e) => setNameplateRpm(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">RPM at gearhead</p>
+                    <input 
+                        className="form-field"
+                        value={rpmAtGearhead}
+                        onChange={(e) => setRpmAtGearhead(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Estimated pumping efficiency after retrofit &#40;%&#41;</p>
+                    <input 
+                        className="form-field"
+                        value={efficiencyAfterRetrofit}
+                        onChange={(e) => setEfficiencyAfterRetrofit(e.target.value)}
+                        type="number" 
+                    />
+                    <p className="input-label">Additional notes</p>
+                    <input 
+                        className="form-field"
+                        id="notes-textbox"
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
                         type="text" 
-                    />
-                    <p className="input-label">Latitude</p>
-                    <input 
-                        className="form-field"
-                        value={latitude}
-                        onChange={(e) => setLatitude(e.target.value)}
-                        type="number" 
-                    />
-                    <p className="input-label">Longitude</p>
-                    <input 
-                        className="form-field"
-                        value={longitude}
-                        onChange={(e) => setLongitude(e.target.value)}
-                        type="number" 
-                    />
-                    <p className="input-label">Utility company</p>
-                    <input 
-                        className="form-field"
-                        value={utilityCo}
-                        onChange={(e) => setUtilityCo(e.target.value)}
-                        type="text" 
-                    />
-                    <p className="input-label">Image</p>
-                    <input 
-                        className="form-field"
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
-                        type="url" 
-                    />
-                    <p className="input-label">Motor make</p>
-                    <input 
-                        className="form-field"
-                        value={motorMake}
-                        onChange={(e) => setMotorMake(e.target.value)}
-                        type="text" 
-                    />
-                    <p className="input-label">Pump make</p>
-                    <input 
-                        className="form-field"
-                        value={pumpMake}
-                        onChange={(e) => setPumpMake(e.target.value)}
-                        type="text" 
-                    />
-                    <p className="input-label">Meter number</p>
-                    <input 
-                        className="form-field"
-                        value={meterNumber}
-                        onChange={(e) => setMeterNumber(e.target.value)}
-                        type="number" 
-                    />
-                    <p className="input-label">Serial number</p>
-                    <input 
-                        className="form-field"
-                        value={serialNumber}
-                        onChange={(e) => setSerialNumber(e.target.value)}
-                        type="number" 
-                    />
-                    <p className="input-label">Voltage</p>
-                    <input 
-                        className="form-field"
-                        value={voltage}
-                        onChange={(e) => setVoltage(e.target.value)}
-                        type="number" 
-                    />
-                    <p className="input-label">Amps</p>
-                    <input 
-                        className="form-field"
-                        value={amps}
-                        onChange={(e) => setAmps(e.target.value)}
-                        type="number" 
-                    />
-                    <p className="input-label">Date last checked</p>
-                    <input 
-                        className="form-field"
-                        value={lastChecked}
-                        onChange={(e) => setLastChecked(e.target.value)}
-                        type="date" 
-                    />
-                    <p className="input-label">Date last retrofit</p>
-                    <input 
-                        className="form-field"
-                        value={lastRetrofit}
-                        onChange={(e) => setLastRetrofit(e.target.value)}
-                        type="date" 
-                    />
-                    <p className="input-label">Due for check?</p>
-                    <input 
-                        className="radio-button"
-                        id="yes"
-                        value={dueForCheck}
-                        onChange={(e) => setDueForCheck(e.target.value)}
-                        type="radio" 
-                    />
-                        <label for="yes">Yes</label>
-                    <input 
-                        className="radio-button"
-                        id="no"
-                        value={dueForCheck}
-                        onChange={(e) => setDueForCheck(e.target.value)}
-                        type="radio" 
-                    />
-                        <label for="no">No</label>
-                    <p className="input-label">Retrofit desired?</p>
-                    <input 
-                        className="radio-button"
-                        id="yes"
-                        value={retrofitDesired}
-                        onChange={(e) => setRetrofitDesired(e.target.value)}
-                        type="radio" 
-                    />
-                        <label for="yes">Yes</label>
-                    <input 
-                        className="radio-button"
-                        id="no"
-                        value={retrofitDesired}
-                        onChange={(e) => setRetrofitDesired(e.target.value)}
-                        type="radio" 
-                    />
-                        <label for="no">No</label>
-                    <p className="input-label">Upcoming retrofit date</p>
-                    <input 
-                        className="form-field"
-                        value={retrofitScheduled}
-                        onChange={(e) => setRetrofitScheduled(e.target.value)}
-                        type="date" 
                     />
                  
-                    <input type="submit" value="Save well information" className="big-button" />
+                    <input type="submit" value="Save test data" className="big-button" />
                 </form>
 
             </div>
@@ -215,4 +267,4 @@ const handleWellCreation = () => {
     )
 }
 
-export default handleWellCreation;
+export default handleTestData;
