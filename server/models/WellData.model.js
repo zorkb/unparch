@@ -6,6 +6,7 @@ const wellDataSchema = new mongoose.Schema({
     landName: { type: String, required: false },
     latitude: { type: Number, required: true },
     longitude: { type: Number, required: true },
+    utilityCo: { type: String, required: false },
     //add in default image
     image: { type: String, default:'' },
     motorMake: { type: String, required: false },
@@ -14,10 +15,8 @@ const wellDataSchema = new mongoose.Schema({
     serialNumber: { type: Number, required: false },
     voltage: { type: Number, required: false },
     amps: { type: Number, required: false },
-    voltage: { type: Number, required: false },
     lastChecked: { type: String, required: false },
     lastRetrofit: { type: String, required: false },
-    lastChecked: { type: String, required: false },
     dueForCheck: { type: Boolean, required: false },
     retrofitDesired: { type: Boolean, required: false },
     retrofitScheduled: { type: String, required: false },
