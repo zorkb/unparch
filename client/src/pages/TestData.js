@@ -1,48 +1,49 @@
 import { useState } from 'react';
-import NavbarSignIn from '../components/NavbarSignIn';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import NavbarSignup from '../components/NavbarSignup'
 import '../css/form-pages.css';
 
-function SignIn() {
+const Signup = () => {
+    const navigate = useNavigate()
+    const [company, setCompany] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const navigate = useNavigate()
 
-    async function signInUser(event) {
+    async function registerUser(event) {
         event.preventDefault()
 
-        const response = await fetch('http://localhost:4000/api/signin', {
+        const response = await fetch('http://localhost:4000/api/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                company, 
                 email, 
                 password,
             }),
-            // navigate()
         })
 
         const data = await response.json()
-
-        if(data.user) {
-            console.log('login worked')
-            // navigate('/userhome')
-            window.location.href='/userhome'
-        } else {
-            alert('Please check your email and password')
+        if(data.status === 'ok') {
+            navigate('/signin')
         }
-        console.log(data);
     }
     return (
         <div className="form-page">
-            <NavbarSignIn />
+            <NavbarSignup />
             <div className="form-component">
 
-                <h3 className="form-title">Sign into your account</h3>
+                <h3 className="form-title">Get started for free</h3>
                 <hr className="form-line" />
-                <form className="form-body" onSubmit={signInUser}>
-                    
+                <form className="form-body" onSubmit={registerUser}>
+                    <p className="input-label">Company</p>
+                    <input 
+                        className="form-field"
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                        type="text" 
+                    />
                     <p className="input-label">Email</p>
                     <input 
                         className="form-field"
@@ -50,7 +51,6 @@ function SignIn() {
                         onChange={(e) => setEmail(e.target.value)}
                         type="email" 
                     />
-
                     <p className="input-label">Password</p>
                     <input 
                         className="form-field"
@@ -59,7 +59,7 @@ function SignIn() {
                         type="password" 
                     />
                  
-                    <input type="submit" value="Sign in" className="big-button" />
+                    <input type="submit" value="Sign up" className="big-button" />
                 </form>
 
             </div>
@@ -67,4 +67,4 @@ function SignIn() {
     )
 }
 
-export default SignIn
+export default Signup

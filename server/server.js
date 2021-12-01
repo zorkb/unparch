@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const connectDB = require('./config/db.connection');
 
 const User = require('./models/User.model');
 
@@ -9,11 +10,7 @@ const User = require('./models/User.model');
 const app = express();
 
 //connect to mongodb
-const dbURI = 'mongodb+srv://zbuch:Vandelay1261@cluster0.xcdqf.mongodb.net/unparch?retryWrites=true&w=majority'
-
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => console.log('connected to mongodb!'))
-    .catch((err) => console.log(err));
+connectDB();
 
 //mongoose and mongo sandbox routes
 // app.get('/signup', (req, res) => {
@@ -66,6 +63,6 @@ app.get('/api/signin', async (req, res) => {
         }
 })
 
-app.listen(4000, () => {
-    console.log('Server started on 4000')
-})
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
