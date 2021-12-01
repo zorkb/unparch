@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavbarSignup from '../components/NavbarSignup'
+import Navbar from '../components/Navbar'
 import '../css/form-pages.css';
 
-const handleTestData = () => {
+const TestData = () => {
     const navigate = useNavigate()
 
     const [technicianCompany, setTechnicianCompany] = useState('')
@@ -76,10 +76,10 @@ const handleTestData = () => {
     }
     return (
         <div className="form-page">
-            <NavbarSignup />
+            <Navbar />
             <div className="form-component">
-                <h5 className="form-type">Add test data</h5>
-                <h3 className="form-title">Test data for {WellData.wellName}</h3>
+                <h5 className="form-type">ADD TEST DATA</h5>
+                <h3 className="form-title">Test data</h3>
                 <hr className="form-line" />
                 <form className="form-body" onSubmit={addTestData}>
                     <p className="input-label">Technician company</p>
@@ -267,4 +267,4 @@ const handleTestData = () => {
     )
 }
 
-export default handleTestData;
+export default TestData;

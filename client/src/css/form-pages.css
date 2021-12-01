@@ -1,6 +1,6 @@
 .form-page {
     background-color: #EAE8DC;
-    height: 100vh;
+    height: fit-content;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -15,10 +15,16 @@
     flex-direction: column;
     box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
     margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.form-type {
+    margin-top: 15px;
+    font-weight: 900;
 }
 
 .form-title {
-    margin-top: 30px;
+    margin-top: 20px;
     font-weight: 700;
 }
 
@@ -58,4 +64,21 @@
     align-self: flex-start;
     font-size: small;
     margin-top: 5px;
+}
+
+.radio-container {
+    align-self: flex-start;
+}
+
+.radio-button-no {
+    margin-left: 40px;
+}
+
+label {
+    font-size: smaller;
+    margin-left: 10px;
+}
+
+#notes-textbox {
+    height: 250px;
 }

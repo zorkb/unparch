@@ -7,8 +7,7 @@ const wellDataSchema = new mongoose.Schema({
     latitude: { type: Number, required: true },
     longitude: { type: Number, required: true },
     utilityCo: { type: String, required: false },
-    //add in default image
-    image: { type: String, default:'' },
+    image: { type: String, default:'https://i.ibb.co/zfPx1fc/Well-Default.png' },
     motorMake: { type: String, required: false },
     pumpMake: { type: String, required: false },
     meterNumber: { type: Number, required: false },

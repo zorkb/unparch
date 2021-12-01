@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavbarSignup from '../components/NavbarSignup'
+import Navbar from '../components/Navbar'
 import '../css/form-pages.css';
 
-const handleWellCreation = () => {
+const WellInfo = () => {
     const navigate = useNavigate()
 
     const [wellName, setWellName] = useState('')
@@ -20,7 +20,6 @@ const handleWellCreation = () => {
     const [amps, setAmps] = useState('')
     const [lastChecked, setLastChecked] = useState('')
     const [lastRetrofit, setLastRetrofit] = useState('')
-    const [lastChecked, setLastChecked] = useState('')
     const [dueForCheck, setDueForCheck] = useState('')
     const [retrofitDesired, setRetrofitDesired] = useState('')
     const [retrofitScheduled, setRetrofitScheduled] = useState('')
@@ -61,9 +60,9 @@ const handleWellCreation = () => {
     }
     return (
         <div className="form-page">
-            <NavbarSignup />
+            <Navbar />
             <div className="form-component">
-                <h5 className="form-type">Add a new well</h5>
+                <h5 className="form-type">ADD A NEW WELL</h5>
                 <h3 className="form-title">Baseline information</h3>
                 <hr className="form-line" />
                 <form className="form-body" onSubmit={createWell}>
@@ -165,40 +164,38 @@ const handleWellCreation = () => {
                         onChange={(e) => setLastRetrofit(e.target.value)}
                         type="date" 
                     />
-                    <p className="input-label">Due for check?</p>
-                    <input 
-                        className="radio-button"
-                        id="yes"
-                        value={dueForCheck}
-                        onChange={(e) => setDueForCheck(e.target.value)}
-                        type="radio" 
-                    />
-                        <label for="yes">Yes</label>
-                    <input 
-                        className="radio-button"
-                        id="no"
-                        value={dueForCheck}
-                        onChange={(e) => setDueForCheck(e.target.value)}
-                        type="radio" 
-                    />
-                        <label for="no">No</label>
-                    <p className="input-label">Retrofit desired?</p>
-                    <input 
-                        className="radio-button"
-                        id="yes"
-                        value={retrofitDesired}
-                        onChange={(e) => setRetrofitDesired(e.target.value)}
-                        type="radio" 
-                    />
-                        <label for="yes">Yes</label>
-                    <input 
-                        className="radio-button"
-                        id="no"
-                        value={retrofitDesired}
-                        onChange={(e) => setRetrofitDesired(e.target.value)}
-                        type="radio" 
-                    />
-                        <label for="no">No</label>
+                    <div className="radio-container">
+                        <p className="input-label">Due for check?</p>
+                        <input 
+                            className="radio-button-yes"
+                            value={dueForCheck}
+                            onChange={(e) => setDueForCheck(e.target.value)}
+                            type="radio" 
+                        />
+                            <label for="yes">Yes</label>
+                        <input 
+                            className="radio-button-no"
+                            value={dueForCheck}
+                            onChange={(e) => setDueForCheck(e.target.value)}
+                            type="radio" 
+                        />
+                            <label for="no">No</label>
+                        <p className="input-label">Retrofit desired?</p>
+                        <input 
+                            className="radio-button-yes"
+                            value={retrofitDesired}
+                            onChange={(e) => setRetrofitDesired(e.target.value)}
+                            type="radio" 
+                        />
+                            <label for="yes">Yes</label>
+                        <input 
+                            className="radio-button-no"
+                            value={retrofitDesired}
+                            onChange={(e) => setRetrofitDesired(e.target.value)}
+                            type="radio" 
+                        />
+                            <label for="no">No</label>
+                    </div>
                     <p className="input-label">Upcoming retrofit date</p>
                     <input 
                         className="form-field"
@@ -215,4 +212,4 @@ const handleWellCreation = () => {
     )
 }
 
-export default handleWellCreation;
+export default WellInfo;

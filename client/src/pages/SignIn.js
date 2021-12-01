@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import NavbarSignIn from '../components/NavbarSignIn';
-// import { useNavigate } from 'react-router-dom';
 import '../css/form-pages.css';
 
 function SignIn() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const navigate = useNavigate()
 
     async function signInUser(event) {
         event.preventDefault()
@@ -20,14 +18,12 @@ function SignIn() {
                 email, 
                 password,
             }),
-            // navigate()
         })
 
         const data = await response.json()
 
         if(data.user) {
             console.log('login worked')
-            // navigate('/userhome')
             window.location.href='/userhome'
         } else {
             alert('Please check your email and password')
