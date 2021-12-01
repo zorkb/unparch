@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const wellDataSchema = new mongoose.Schema({
-    wellOwner: { type: mongoose.Types.ObjectId, ref: 'WellOwner' },
+const WellSchema = new mongoose.Schema({
+    wellOwner: { type: mongoose.Types.ObjectId, ref: 'User' },
     wellName: { type: String, default: 'New Well' },
     landName: { type: String, required: false },
     latitude: { type: Number, required: true },
@@ -24,6 +24,6 @@ const wellDataSchema = new mongoose.Schema({
     { collection: 'well-data' },
 );
 
-const WellData = mongoose.model('WellData', wellDataSchema);
+const Well = mongoose.model('well', WellSchema);
 
-module.exports = WellData
+module.exports = Well;

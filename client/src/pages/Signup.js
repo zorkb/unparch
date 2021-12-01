@@ -6,6 +6,7 @@ import '../css/form-pages.css';
 const Signup = () => {
     const navigate = useNavigate()
     const [company, setCompany] = useState('')
+    const [role, setRole] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -19,6 +20,7 @@ const Signup = () => {
             },
             body: JSON.stringify({
                 company, 
+                role,
                 email, 
                 password,
             }),
@@ -44,6 +46,7 @@ const Signup = () => {
                         onChange={(e) => setCompany(e.target.value)}
                         type="text" 
                     />
+                    
                     <p className="input-label">Email</p>
                     <input 
                         className="form-field"
@@ -58,7 +61,27 @@ const Signup = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         type="password" 
                     />
-                 
+
+                    <div className="radio-container">
+                        <p className="input-label">Which best describes you?</p>
+                        <input 
+                            className="radio-button-yes"
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
+                            type="radio" 
+                            name="radAnswer"
+                        />
+                            <label for="yes">Well owner</label>
+                        <input 
+                            className="radio-button-no"
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
+                            type="radio" 
+                            name="radAnswer"
+                        />
+                            <label for="no">Technician</label>
+                    </div>
+
                     <input type="submit" value="Sign up" className="big-button" />
                 </form>
 

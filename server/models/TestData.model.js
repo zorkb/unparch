@@ -34,6 +34,6 @@ const testDataSchema = new mongoose.Schema({
     { collection: 'well-test-data' },
 );
 
-const TestData = mongoose.model('TestData', testDataSchema);
+const TestData = mongoose.model('testData', testDataSchema);
 
 module.exports = testData
