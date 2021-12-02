@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const WellSchema = new mongoose.Schema({
-    wellOwner: { type: mongoose.Types.ObjectId, ref: 'User' },
+    wellOwner: { type: mongoose.Types.ObjectId, ref: 'User', required: false },
     wellName: { type: String, default: 'New Well' },
     landName: { type: String, required: false },
     latitude: { type: Number, required: true },

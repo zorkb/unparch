@@ -8,12 +8,12 @@ class CreateWell extends Component {
     constructor() {
         super();
         this.state = {
-            wellName: '', 
+            wellName: 'New Well', 
             landName: '', 
             latitude: '',
             longitude: '',
             utilityCo: '',
-            image: '',
+            image: 'https://i.ibb.co/zfPx1fc/Well-Default.png',
             motorMake: '',
             pumpMake: '',
             meterNumber: '',
@@ -30,35 +30,35 @@ class CreateWell extends Component {
     
     onChange = e => {
         this.setState( { [e.target.name]: e.target.value});
-    }
+    };
 
     onSubmit = e => {
         e.preventDefault();
 
         const data = {
             wellName: this.state.wellName, 
-            landName: this.state.landName, 
+            // landName: this.state.landName, 
             latitude: this.state.latitude,
             longitude: this.state.longitude,
-            utilityCo: this.state.utilityCo,
-            image: this.state.image,
-            motorMake: this.state.motorMake,
-            pumpMake: this.state.pumpMake,
-            meterNumber: this.state.meterNumber,
-            serialNumber: this.state.serialNumber,
-            voltage: this.state.voltage,
-            amps: this.state.amps,
-            lastChecked: this.state.lastChecked,
-            lastRetrofit: this.state.lastRetrofit,
-            dueForCheck: this.state.dueForCheck,
-            retrofitDesired: this.state.retrofitDesired,
-            retrofitScheduled: this.state.retrofitScheduled,
+            // utilityCo: this.state.utilityCo,
+            // image: this.state.image,
+            // motorMake: this.state.motorMake,
+            // pumpMake: this.state.pumpMake,
+            // meterNumber: this.state.meterNumber,
+            // serialNumber: this.state.serialNumber,
+            // voltage: this.state.voltage,
+            // amps: this.state.amps,
+            // lastChecked: this.state.lastChecked,
+            // lastRetrofit: this.state.lastRetrofit,
+            // dueForCheck: this.state.dueForCheck,
+            // retrofitDesired: this.state.retrofitDesired,
+            // retrofitScheduled: this.state.retrofitScheduled,
         }
 
     axios
-        .post('http://localhost:4000/routes/api/wells', data)
+        .post('http://localhost:4000/routes/api/wells/', data)
         .then(res => {
-            this.setState[{
+            this.setState({
                 wellName: '', 
                 landName: '', 
                 latitude: '',
@@ -76,7 +76,7 @@ class CreateWell extends Component {
                 dueForCheck: '',
                 retrofitDesired: '',
                 retrofitScheduled: '',
-            }]
+            })
             this.props.history.push('/');
         })
         .catch(err => {
@@ -95,6 +95,7 @@ class CreateWell extends Component {
                     <form className="form-body" noValidate onSubmit={this.onSubmit}>
                         <p className="input-label">Well name</p>
                         <input 
+                            name="wellName"
                             className="form-field"
                             value={this.state.wellName}
                             onChange={this.onChange}
@@ -109,6 +110,7 @@ class CreateWell extends Component {
                         />
                         <p className="input-label">Latitude</p>
                         <input 
+                            name="latitude"
                             className="form-field"
                             value={this.state.latitude}
                             onChange={this.onChange}
@@ -116,6 +118,7 @@ class CreateWell extends Component {
                         />
                         <p className="input-label">Longitude</p>
                         <input 
+                            name="longitude"
                             className="form-field"
                             value={this.state.longitude}
                             onChange={this.onChange}
@@ -130,6 +133,7 @@ class CreateWell extends Component {
                         />
                         <p className="input-label">Image</p>
                         <input 
+                            name="image"
                             className="form-field"
                             value={this.state.image}
                             onChange={this.onChange}

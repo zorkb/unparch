@@ -6,7 +6,7 @@ const Well = require('../../models/WellData.model');
 router.get('/test', (req, res) => res.send('well route testing!'));
 
 router.get('/', (req, res) => {
-    Well.find()
+    Well.find({})
         .then(well => res.json(well))
         .catch(err => res.status(404).json({ nowellsfound: 'No wells found' }));
 });
