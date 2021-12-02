@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const testDataSchema = new mongoose.Schema({
+const TestDataSchema = new mongoose.Schema({
     well: { type: mongoose.Types.ObjectId, ref: 'WellData' },
     technician: { type: mongoose.Types.ObjectId, ref: 'User' },
     //look into grabbing from technician model
@@ -34,6 +34,6 @@ const testDataSchema = new mongoose.Schema({
     { collection: 'well-test-data' },
 );
 
-const TestData = mongoose.model('testData', testDataSchema);
+const WellTest = mongoose.model('welltest', TestDataSchema);
 
-module.exports = testData
+module.exports = WellTest;

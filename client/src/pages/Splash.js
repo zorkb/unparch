@@ -1,5 +1,6 @@
 // import { useState } from 'react';
 import NavbarSplash from '../components/NavbarSplash';
+import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import '../css/splash.css';
 
@@ -22,7 +23,7 @@ const SplashPage = () => {
                 </Link>
                 </div>
             </div>
-
+            <Footer />
         </div>
     )
 }

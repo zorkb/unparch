@@ -1,53 +1,29 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import WellCard from '../components/WellCard';
+import { useParams } from 'react-router';
 
-class ShowWellDetails extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            wells: []
-        };
-    }
+function WellShow(props) {
 
-    componentDidMount() {
-        axios
-            .get('http://localhost:4000/routes/api/wells')
-            .then(res => {
-                this.setState({
-                    wells: res.data
-                })
-            })
-            .catch(err => {
-                console.log("Error in ShowWellList!");
-            });
-    }
+    const [well, setWell] = useState(null);
+    const params = useParams()
 
-    render() {
-        const wells = this.state.wells;
-        console.log("PrintWell: " + wells);
-        let wellList;
+    useEffect(() => {
+        axios.get(`http://localhost:4000/routes/api/wells/${params.id}`).then(res => setWell(res.data))
+    }, [])
 
-        if(!wells) {
-            wellList = "No wells added yet. Click below to get started!"
-        } else {
-            wellList = wells.map((well, k) => 
-                <WellCard well={well} key={k} />
-            );
-        }
-        
-        return(
-            <div>
-                <Link to="/create-well">
-                    Add New Well
-                </Link>
-                <div>
-                    {wellList}
-                </div>
+        return (
+            <div className='well-show'>
+            <Navbar />
+            <div className="well-data">
+                <img src={well.image} alt="" />
             </div>
-        )
-    }
+            <Footer />
+            </div>
+        );
+    
 }
 
-export default ShowWellDetails;
+export default WellShow;

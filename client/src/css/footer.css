@@ -1,0 +1,18 @@
+.footer-container {
+    display: flex;
+    flex-direction: inline;
+    align-items: center;
+    background-color: #484848;
+    padding: 40px;
+}
+
+#logo-dark {
+    width: 50%;
+}
+.site-mission h3 {
+    font-size: 25px;
+    color: #CCCCCC;
+    max-width: 600px;
+    margin-left: -30px;
+}
+
