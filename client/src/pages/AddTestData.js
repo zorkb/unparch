@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar'
 import '../css/form-pages.css';
 
-const TestData = () => {
+const AddTestData = () => {
     const navigate = useNavigate()
 
     const [technicianCompany, setTechnicianCompany] = useState('')
@@ -267,4 +267,4 @@ const TestData = () => {
     )
 }
 
-export default TestData;
+export default AddTestData;
