@@ -5,26 +5,26 @@ import axios from 'axios';
 
 
 class CreateWell extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             wellName: 'New Well', 
-            landName: '', 
-            latitude: '',
-            longitude: '',
-            utilityCo: '',
-            image: 'https://i.ibb.co/zfPx1fc/Well-Default.png',
-            motorMake: '',
-            pumpMake: '',
-            meterNumber: '',
-            serialNumber: '',
-            voltage: '',
-            amps: '',
-            lastChecked: '',
-            lastRetrofit: '',
-            dueForCheck: '',
-            retrofitDesired: '',
-            retrofitScheduled: '',
+                landName: '', 
+                latitude: 0,
+                longitude: 0,
+                utilityCo: '',
+                image: 'https://i.ibb.co/zfPx1fc/Well-Default.png',
+                motorMake: '',
+                pumpMake: '',
+                meterNumber: 0,
+                serialNumber: 0,
+                voltage: 0,
+                amps: 0,
+                lastChecked: '',
+                lastRetrofit: '',
+                dueForCheck: false,
+                retrofitDesired: false,
+                retrofitScheduled: '',
         };
     }    
     
@@ -37,50 +37,50 @@ class CreateWell extends Component {
 
         const data = {
             wellName: this.state.wellName, 
-            // landName: this.state.landName, 
+            landName: this.state.landName, 
             latitude: this.state.latitude,
             longitude: this.state.longitude,
-            // utilityCo: this.state.utilityCo,
-            // image: this.state.image,
-            // motorMake: this.state.motorMake,
-            // pumpMake: this.state.pumpMake,
-            // meterNumber: this.state.meterNumber,
-            // serialNumber: this.state.serialNumber,
-            // voltage: this.state.voltage,
-            // amps: this.state.amps,
-            // lastChecked: this.state.lastChecked,
-            // lastRetrofit: this.state.lastRetrofit,
-            // dueForCheck: this.state.dueForCheck,
-            // retrofitDesired: this.state.retrofitDesired,
-            // retrofitScheduled: this.state.retrofitScheduled,
+            utilityCo: this.state.utilityCo,
+            image: this.state.image,
+            motorMake: this.state.motorMake,
+            pumpMake: this.state.pumpMake,
+            meterNumber: this.state.meterNumber,
+            serialNumber: this.state.serialNumber,
+            voltage: this.state.voltage,
+            amps: this.state.amps,
+            lastChecked: this.state.lastChecked,
+            lastRetrofit: this.state.lastRetrofit,
+            dueForCheck: this.state.dueForCheck,
+            retrofitDesired: this.state.retrofitDesired,
+            retrofitScheduled: this.state.retrofitScheduled,
         }
 
     axios
         .post('http://localhost:4000/routes/api/wells/', data)
         .then(res => {
             this.setState({
-                wellName: '', 
+                wellName: 'New Well', 
                 landName: '', 
-                latitude: '',
-                longitude: '',
+                latitude: 0,
+                longitude: 0,
                 utilityCo: '',
-                image: '',
+                image: 'https://i.ibb.co/zfPx1fc/Well-Default.png',
                 motorMake: '',
                 pumpMake: '',
-                meterNumber: '',
-                serialNumber: '',
-                voltage: '',
-                amps: '',
+                meterNumber: 0,
+                serialNumber: 0,
+                voltage: 0,
+                amps: 0,
                 lastChecked: '',
                 lastRetrofit: '',
-                dueForCheck: '',
-                retrofitDesired: '',
+                dueForCheck: false,
+                retrofitDesired: false,
                 retrofitScheduled: '',
             })
-            this.props.history.push('/');
+            window.location.href='/well-list';
         })
         .catch(err => {
-            console.log("Error in CreateWell!")
+            console.log(err)
         });
     }
     
@@ -92,20 +92,21 @@ class CreateWell extends Component {
                     <h5 className="form-type">ADD A NEW WELL</h5>
                     <h3 className="form-title">Baseline information</h3>
                     <hr className="form-line" />
-                    <form className="form-body" noValidate onSubmit={this.onSubmit}>
+                    <form className="form-body" noValidate onSubmit={(e) => this.onSubmit(e)}>
                         <p className="input-label">Well name</p>
                         <input 
                             name="wellName"
                             className="form-field"
                             value={this.state.wellName}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="text" 
                         />
                         <p className="input-label">Land name</p>
-                        <input 
+                        <input
+                            name="landName" 
                             className="form-field"
                             value={this.state.landName}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="text" 
                         />
                         <p className="input-label">Latitude</p>
@@ -113,7 +114,7 @@ class CreateWell extends Component {
                             name="latitude"
                             className="form-field"
                             value={this.state.latitude}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="number" 
                         />
                         <p className="input-label">Longitude</p>
@@ -121,14 +122,15 @@ class CreateWell extends Component {
                             name="longitude"
                             className="form-field"
                             value={this.state.longitude}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="number" 
                         />
                         <p className="input-label">Utility company</p>
                         <input 
+                            name="utilityCo" 
                             className="form-field"
                             value={this.state.utilityCo}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="text" 
                         />
                         <p className="input-label">Image</p>
@@ -136,102 +138,115 @@ class CreateWell extends Component {
                             name="image"
                             className="form-field"
                             value={this.state.image}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="url" 
                         />
                         <p className="input-label">Motor make</p>
                         <input 
+                            name="motorMake" 
                             className="form-field"
                             value={this.state.motorMake}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="text" 
                         />
                         <p className="input-label">Pump make</p>
                         <input 
+                            name="pumpMake" 
                             className="form-field"
                             value={this.state.pumpMake}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="text" 
                         />
                         <p className="input-label">Meter number</p>
                         <input 
+                            name="meterNumber" 
                             className="form-field"
                             value={this.state.meterNumber}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="number" 
                         />
                         <p className="input-label">Serial number</p>
                         <input 
+                            name="serialNumber" 
                             className="form-field"
                             value={this.state.serialNumber}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="number" 
                         />
                         <p className="input-label">Voltage</p>
                         <input 
+                            name="voltage" 
                             className="form-field"
                             value={this.state.voltage}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="number" 
                         />
                         <p className="input-label">Amps</p>
                         <input 
+                            name="amps" 
                             className="form-field"
                             value={this.state.amps}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="number" 
                         />
                         <p className="input-label">Date last checked</p>
                         <input 
+                            name="lastChecked" 
                             className="form-field"
                             value={this.state.lastChecked}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="date" 
                         />
                         <p className="input-label">Date last retrofit</p>
                         <input 
+                            name="lastRetrofit"
                             className="form-field"
                             value={this.state.lastRetrofit}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="date" 
                         />
                         <div className="radio-container">
                             <p className="input-label">Due for check?</p>
                             <input 
+                                name="dueForCheck" 
                                 className="radio-button-yes"
                                 value={this.state.dueForCheck}
-                                onChange={this.onChange}
+                                onChange={(e) => this.onChange(e)}
                                 type="radio" 
                             />
                                 <label for="yes">Yes</label>
                             <input 
+                                name="dueForCheck"  
                                 className="radio-button-no"
                                 value={this.state.dueForCheck}
-                                onChange={this.onChange}
+                                onChange={(e) => this.onChange(e)}
                                 type="radio" 
                             />
                                 <label for="no">No</label>
                             <p className="input-label">Retrofit desired?</p>
                             <input 
+                                name="retrofitDesired" 
                                 className="radio-button-yes"
                                 value={this.state.retrofitDesired}
-                                onChange={this.onChange}
+                                onChange={(e) => this.onChange(e)}
                                 type="radio" 
                             />
                                 <label for="yes">Yes</label>
                             <input 
+                                name="retrofitDesired" 
                                 className="radio-button-no"
                                 value={this.state.retrofitDesired}
-                                onChange={this.onChange}
+                                onChange={(e) => this.onChange(e)}
                                 type="radio" 
                             />
                                 <label for="no">No</label>
                         </div>
                         <p className="input-label">Upcoming retrofit date</p>
                         <input 
+                            name="retrofitScheduled" 
                             className="form-field"
                             value={this.state.retrofitScheduled}
-                            onChange={this.onChange}
+                            onChange={(e) => this.onChange(e)}
                             type="date" 
                         /> 
                         <input type="submit" value="Save well information" className="big-button" />
