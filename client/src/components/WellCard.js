@@ -16,15 +16,15 @@ const WellCard = (props) => {
                     </Link>
                 </h2>
                 <div className="data-tiles">
-                    <h2 className="card-data">gpm</h2>
+                    <h3 className="card-data">1821 gpm</h3>
                     <p className="card-data-title">Flow rate</p>
-                    <h2 className="card-data">ft</h2>
+                    <h3 className="card-data">308 ft</h3>
                     <p className="card-data-title">Pumping water level</p>
-                    <h2 className="card-data">ft</h2>
+                    <h3 className="card-data">154 ft</h3>
                     <p className="card-data-title">Standing water level</p>
-                    <h2 className="card-data">ft</h2>
+                    <h3 className="card-data">154 ft</h3>
                     <p className="card-data-title">Draw down</p>
-                    <h2 className="card-data">%</h2>
+                    <h3 className="card-data">51%</h3>
                     <p className="card-data-title">Efficiency</p>
                 </div>
             </div>

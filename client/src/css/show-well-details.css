@@ -1,0 +1,9 @@
+.well-data {
+    min-height: 60vh;
+    background-color: #F8F7F3;
+}
+
+.data-text {
+    font-size: large;
+    font-weight: 800;
+}
