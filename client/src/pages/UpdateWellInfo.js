@@ -4,33 +4,147 @@ import '../css/form-pages.css';
 import axios from 'axios';
 
 
-class CreateWell extends Component {
+class UpdateWellInfo extends Component {
     constructor(props) {
         super(props);
+
+        // this.onChangeWellName = this.onChangeWellName.bind(this);
+        // this.onChangeLandName = this.onChangeLandName.bind(this);
+        // this.onChangeLatitude = this.onChangeLatitude.bind(this);
+        // this.onChangeLongitude = this.onChangeLongitude.bind(this);
+        // this.onChangeUtilityCo = this.onChangeUtilityCo.bind(this); 
+        // this.onChangeImage = this.onChangeImage.bind(this);
+        // this.onChangeMotorMake = this.onChangeMotorMake.bind(this);
+        // this.onChangePumpMake = this.onChangePumpMake.bind(this);
+        // this.onChangeMeterNumber = this.onChangeMeterNumber.bind(this);
+        // this.onChangeSerialNumber = this.onChangeSerialNumber.bind(this);
+        // this.onChangeVoltage = this.onChangeVoltage.bind(this);
+        // this.onChangeAmps = this.onChangeAmps.bind(this);
+        // this.onChangeLastChecked = this.onChangeLastChecked.bind(this);
+        // this.onChangeLastRetrofit = this.onChangeLastRetrofit.bind(this);
+        // this.onChangeDueForCheck = this.onChangeDueForCheck.bind(this);
+        // this.onChangeRetrofitDesired = this.onChangeRetrofitDesired.bind(this);
+        // this.onChangeRetrofitScheduled = this.onChangeRetrofitScheduled.bind(this);
+        // this.onSubmit = this.onSubmit.bind(this);
+        
+
         this.state = {
             wellName: 'New Well', 
-                landName: '', 
-                latitude: 0,
-                longitude: 0,
-                utilityCo: '',
-                image: 'https://i.ibb.co/zfPx1fc/Well-Default.png',
-                motorMake: '',
-                pumpMake: '',
-                meterNumber: 0,
-                serialNumber: 0,
-                voltage: 0,
-                amps: 0,
-                lastChecked: '',
-                lastRetrofit: '',
-                dueForCheck: false,
-                retrofitDesired: false,
-                retrofitScheduled: '',
+            landName: '', 
+            latitude: 0,
+            longitude: 0,
+            utilityCo: '',
+            image: 'https://i.ibb.co/zfPx1fc/Well-Default.png',
+            motorMake: '',
+            pumpMake: '',
+            meterNumber: 0,
+            serialNumber: 0,
+            voltage: 0,
+            amps: 0,
+            lastChecked: '',
+            lastRetrofit: '',
+            dueForCheck: false,
+            retrofitDesired: false,
+            retrofitScheduled: '',
         };
     }    
     
-    onChange = e => {
-        this.setState( { [e.target.name]: e.target.value});
-    };
+    componentDidMount() {
+        axios.get(`http://localhost:4000/students/edit-student/${this.props.params.id}`)
+            .then(res => {
+                this.setState({
+                    wellName: res.data.wellName, 
+                    landName: res.data.landName, 
+                    latitude: res.data.latitude,
+                    longitude: res.data.longitude,
+                    utilityCo: res.data.utilityCo,
+                    image: res.data.motorMake,
+                    motorMake: res.data.motorMake,
+                    pumpMake: res.data.pumpMake,
+                    meterNumber: res.data.meterNumber,
+                    serialNumber: res.data.serialNumber,
+                    voltage: res.data.voltage,
+                    amps: res.data.amps,
+                    lastChecked: res.data.lastChecked,
+                    lastRetrofit: res.data.lastRetrofit,
+                    dueForCheck: res.data.dueForCheck,
+                    retrofitDesired: res.data.retrofitDesired,
+                    retrofitScheduled: res.data.retrofitScheduled,
+                });
+        })
+        .catch((error) => {
+        console.log(error);
+        })
+    }
+
+    onChangeWellName = (e) => {
+        this.setState({ wellName: e.target.value })
+    }
+
+    onChangeLandName = (e) => {
+        this.setState({ landName: e.target.value })
+    }
+
+    onChangeLatitude = (e) => {
+        this.setState({ latitude: e.target.value })
+    }
+
+    onChangeLongitude = (e) => {
+        this.setState({ longitude: e.target.value })
+    }
+
+    onChangeUtilityCo = (e) => {
+        this.setState({ utilityCo: e.target.value })
+    }
+
+    onChangeimage = (e) =>  {
+        this.setState({ image: e.target.value })
+    }
+
+    onChangeMotorMake = (e) => {
+        this.setState({ motorMake: e.target.value })
+    }
+
+    onChangePumpMake = (e) => {
+        this.setState({ pumpMake: e.target.value })
+    }
+
+    onChangeMeterNumber = (e) => {
+        this.setState({ meterNumber: e.target.value })
+    }
+
+    onChangeSerialNumber = (e) => {
+        this.setState({ serialNumber: e.target.value })
+    }
+
+    onChangeVoltage = (e) => {
+        this.setState({ voltage: e.target.value })
+    }
+
+    onChangeAmps = (e) => {
+        this.setState({ amps: e.target.value })
+    }
+
+    onChangeLastChecked = (e) => {
+        this.setState({ lastChecked: e.target.value })
+    }
+
+    onChangeLastRetrofit = (e) => {
+        this.setState({ lastRetrofit: e.target.value })
+    }
+
+    onChangeDueForCheck = (e) => {
+        this.setState({ dueForCheck: e.target.value })
+    }
+
+    onChangeRetrofitDesired = (e) => {
+        this.setState({ retrofitDesired: e.target.value })
+    }
+
+    onChangeRetrofitScheduled = (e) => {
+        this.setState({ retrofitScheduled: e.target.value })
+    }
+
 
     onSubmit = e => {
         e.preventDefault();
@@ -53,35 +167,18 @@ class CreateWell extends Component {
             dueForCheck: this.state.dueForCheck,
             retrofitDesired: this.state.retrofitDesired,
             retrofitScheduled: this.state.retrofitScheduled,
-        }
+        };
 
     axios
-        .post('http://localhost:4000/routes/api/wells/', data)
-        .then(res => {
-            this.setState({
-                wellName: 'New Well', 
-                landName: '', 
-                latitude: 0,
-                longitude: 0,
-                utilityCo: '',
-                image: 'https://i.ibb.co/zfPx1fc/Well-Default.png',
-                motorMake: '',
-                pumpMake: '',
-                meterNumber: 0,
-                serialNumber: 0,
-                voltage: 0,
-                amps: 0,
-                lastChecked: '',
-                lastRetrofit: '',
-                dueForCheck: false,
-                retrofitDesired: false,
-                retrofitScheduled: '',
-            })
-            window.location.href='/well-list';
+        .put(`http://localhost:4000/routes/api/wells/${this.props.params.id}`, data)
+        .then((res) => {
+            console.log(res.data)
+            console.log('Well successfully updated')
+        }).catch((error) => {
+            console.log(error)
         })
-        .catch(err => {
-            console.log(err)
-        });
+        
+        window.location.href='/well-list';
     }
     
     render() {
@@ -89,7 +186,7 @@ class CreateWell extends Component {
             <div className="form-page">
                 <Navbar />
                 <div className="form-component">
-                    <h5 className="form-type">ADD A NEW WELL</h5>
+                    <h5 className="form-type">UPDATE WELL</h5>
                     <h3 className="form-title">Baseline information</h3>
                     <hr className="form-line" />
                     <form className="form-body" noValidate onSubmit={(e) => this.onSubmit(e)}>
@@ -98,7 +195,7 @@ class CreateWell extends Component {
                             name="wellName"
                             className="form-field"
                             value={this.state.wellName}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeWellName}
                             type="text" 
                         />
                         <p className="input-label">Land name</p>
@@ -106,7 +203,7 @@ class CreateWell extends Component {
                             name="landName" 
                             className="form-field"
                             value={this.state.landName}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeLandName}
                             type="text" 
                         />
                         <p className="input-label">Latitude</p>
@@ -114,7 +211,7 @@ class CreateWell extends Component {
                             name="latitude"
                             className="form-field"
                             value={this.state.latitude}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeLatitude}
                             type="number" 
                         />
                         <p className="input-label">Longitude</p>
@@ -122,7 +219,7 @@ class CreateWell extends Component {
                             name="longitude"
                             className="form-field"
                             value={this.state.longitude}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeLongitude}
                             type="number" 
                         />
                         <p className="input-label">Utility company</p>
@@ -130,7 +227,7 @@ class CreateWell extends Component {
                             name="utilityCo" 
                             className="form-field"
                             value={this.state.utilityCo}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeUtilityCo}
                             type="text" 
                         />
                         <p className="input-label">Image</p>
@@ -138,7 +235,7 @@ class CreateWell extends Component {
                             name="image"
                             className="form-field"
                             value={this.state.image}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeImage}
                             type="url" 
                         />
                         <p className="input-label">Motor make</p>
@@ -146,7 +243,7 @@ class CreateWell extends Component {
                             name="motorMake" 
                             className="form-field"
                             value={this.state.motorMake}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeMotorMake}
                             type="text" 
                         />
                         <p className="input-label">Pump make</p>
@@ -154,7 +251,7 @@ class CreateWell extends Component {
                             name="pumpMake" 
                             className="form-field"
                             value={this.state.pumpMake}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.OnChangePumpMake}
                             type="text" 
                         />
                         <p className="input-label">Meter number</p>
@@ -162,7 +259,7 @@ class CreateWell extends Component {
                             name="meterNumber" 
                             className="form-field"
                             value={this.state.meterNumber}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeMeterNumber}
                             type="number" 
                         />
                         <p className="input-label">Serial number</p>
@@ -170,7 +267,7 @@ class CreateWell extends Component {
                             name="serialNumber" 
                             className="form-field"
                             value={this.state.serialNumber}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeSerialNumber}
                             type="number" 
                         />
                         <p className="input-label">Voltage</p>
@@ -178,7 +275,7 @@ class CreateWell extends Component {
                             name="voltage" 
                             className="form-field"
                             value={this.state.voltage}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeVoltage}
                             type="number" 
                         />
                         <p className="input-label">Amps</p>
@@ -186,7 +283,7 @@ class CreateWell extends Component {
                             name="amps" 
                             className="form-field"
                             value={this.state.amps}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeAmps}
                             type="number" 
                         />
                         <p className="input-label">Date last checked</p>
@@ -194,7 +291,7 @@ class CreateWell extends Component {
                             name="lastChecked" 
                             className="form-field"
                             value={this.state.lastChecked}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeLastChecked}
                             type="date" 
                         />
                         <p className="input-label">Date last retrofit</p>
@@ -202,7 +299,7 @@ class CreateWell extends Component {
                             name="lastRetrofit"
                             className="form-field"
                             value={this.state.lastRetrofit}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeLastRetrofit}
                             type="date" 
                         />
                         <div className="radio-container">
@@ -211,7 +308,7 @@ class CreateWell extends Component {
                                 name="dueForCheck" 
                                 className="radio-button-yes"
                                 value={this.state.dueForCheck}
-                                onChange={(e) => this.onChange(e)}
+                                onChange={this.onChangeDueForCheck}
                                 type="radio" 
                             />
                                 <label for="yes">Yes</label>
@@ -219,7 +316,7 @@ class CreateWell extends Component {
                                 name="dueForCheck"  
                                 className="radio-button-no"
                                 value={this.state.dueForCheck}
-                                onChange={(e) => this.onChange(e)}
+                                onChange={this.onChangeDueForCheck}
                                 type="radio" 
                             />
                                 <label for="no">No</label>
@@ -228,7 +325,7 @@ class CreateWell extends Component {
                                 name="retrofitDesired" 
                                 className="radio-button-yes"
                                 value={this.state.retrofitDesired}
-                                onChange={(e) => this.onChange(e)}
+                                onChange={this.onChangeRetrofitDesired}
                                 type="radio" 
                             />
                                 <label for="yes">Yes</label>
@@ -236,7 +333,7 @@ class CreateWell extends Component {
                                 name="retrofitDesired" 
                                 className="radio-button-no"
                                 value={this.state.retrofitDesired}
-                                onChange={(e) => this.onChange(e)}
+                                onChange={this.onChangeRetrofitDesired}
                                 type="radio" 
                             />
                                 <label for="no">No</label>
@@ -246,7 +343,7 @@ class CreateWell extends Component {
                             name="retrofitScheduled" 
                             className="form-field"
                             value={this.state.retrofitScheduled}
-                            onChange={(e) => this.onChange(e)}
+                            onChange={this.onChangeRetrofitScheduled}
                             type="date" 
                         /> 
                         <input type="submit" value="Save well information" className="big-button" />
@@ -258,4 +355,4 @@ class CreateWell extends Component {
     }
 }
 
-export default CreateWell;
+export default UpdateWellInfo;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
 
 import { useParams } from 'react-router';
 
@@ -79,7 +80,7 @@ function WellShow(props) {
                         <p className="data-text">{well.retrofitScheduled}</p> 
 
                     <div className="page-button">
-                        <p>Update well</p>
+                        <Link to={`/edit-well/${well._id}`}>Update well</Link>
                     </div>
                     <div className="page-button">
                         <p onClick={handleDelete}>Delete well</p>
